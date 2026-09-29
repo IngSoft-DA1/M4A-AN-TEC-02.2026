@@ -1,0 +1,45 @@
+﻿@using System.Text.Json
+@using Services.Models
+@inherits LayoutComponentBase
+
+@inject IJSRuntime JS
+
+<div class="page">
+    @if (_user != null)
+    {
+        <div class="sidebar">
+            <NavMenu/>
+        </div>
+    }
+
+    <main>
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>
+
+@code {
+    private LoggedUserDTO? _user;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender) return;
+
+        string json = await JS.InvokeAsync<string>("localStorage.getItem", "user");
+
+        if (!String.IsNullOrEmpty(json))
+        {
+            _user = JsonSerializer.Deserialize<LoggedUserDTO>(json);
+
+            StateHasChanged(); //refresh UI after loading user
+        }
+    }
+
+}
