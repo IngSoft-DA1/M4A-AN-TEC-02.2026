@@ -1,0 +1,97 @@
+﻿@page "/"
+@using System.Text.Json
+@using Services
+@using Services.Models
+
+@inject SessionService SessionService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JS
+
+<PageTitle>Home</PageTitle>
+
+@if (_user != null)
+{
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow-sm border-1 rounded-4">
+                    <div class="card-body p-4 text-center">
+                        <h1 class="fw-bold mb-2">Home Screen</h1>
+                        <p class="text-muted mb-4">
+                            Movie Manager created with Blazor
+                        </p>
+                        <div class="alert alert-light border rounded-3 mb-4">
+                            <h5 class="mb-1">Welcome,
+                                <span class="text-secondary fw-bold">
+                                    @_user.Name @_user.LastName
+                                </span>
+                            </h5>
+                            <div class="sm-light rounded-4 p-2 mb-4">
+                                <div class="mb-2">
+                                    <small class="fw-bold">Email</small>
+                                    <small>
+                                        <span class="badge  px-3 py-2 squared-pill"
+                                              style="background-color:#3f3ce8;">
+                                            @_user.Email
+                                        </span>
+                                    </small>
+                                </div>
+                                <div class="mt-2">
+                                    <small class="fw-bold">Role</small>
+                                    <small>
+                                        <span class="badge px-3 py-2 squared-pill"
+                                              style="background-color:#3f3ce8;">
+                                            @_user.Role
+                                        </span>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary px-4"
+                                @onclick="OnLogout"> Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="d-flex justify-content-center align-items-center mt-lg-4">
+        <div class="p-4 border rounded shadow bg-white" style="min-width: 500px;">
+            <div class="d-flex justify-content-center align-items-center">
+                <h1>Movie Manager</h1>
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+                <NavLink class="nav-link" href="login" Match="NavLinkMatch.All">
+                    <button type="button" class="btn btn-primary" style="min-width: 120px;">Login</button>
+                </NavLink>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private LoggedUserDTO? _user;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender) return;
+        
+        var json = await JS.InvokeAsync<string>("localStorage.getItem", "user");
+        if (!string.IsNullOrEmpty(json))
+        {
+            _user = JsonSerializer.Deserialize<LoggedUserDTO>(json);
+            StateHasChanged(); //refresh UI after loading user
+        }
+    }
+
+    private async Task OnLogout()
+    {
+        SessionService.Logout();
+        await JS.InvokeVoidAsync("localStorage.removeItem", "user");
+        NavigationManager.NavigateTo("/", forceLoad: true);
+    }
+
+}
