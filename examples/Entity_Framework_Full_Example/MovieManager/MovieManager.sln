@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieManager.UI", "MovieManager.UI\MovieManager.UI.csproj", "{86134C55-F353-4AA8-92A6-D50FD25AEB94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieManager.Domain", "MovieManager.Domain\MovieManager.Domain.csproj", "{3C13A309-B52B-4AE5-87CD-F30683E37CFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieManager.DataAccess", "MovieManager.DataAccess\MovieManager.DataAccess.csproj", "{B0DB3263-EF63-49D0-9682-97CC26AED73E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieManager.Services", "MovieManager.Services\MovieManager.Services.csproj", "{E3BAE180-6937-4AF1-8E54-62553A42E897}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{86134C55-F353-4AA8-92A6-D50FD25AEB94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86134C55-F353-4AA8-92A6-D50FD25AEB94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86134C55-F353-4AA8-92A6-D50FD25AEB94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86134C55-F353-4AA8-92A6-D50FD25AEB94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C13A309-B52B-4AE5-87CD-F30683E37CFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C13A309-B52B-4AE5-87CD-F30683E37CFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C13A309-B52B-4AE5-87CD-F30683E37CFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C13A309-B52B-4AE5-87CD-F30683E37CFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0DB3263-EF63-49D0-9682-97CC26AED73E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0DB3263-EF63-49D0-9682-97CC26AED73E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0DB3263-EF63-49D0-9682-97CC26AED73E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0DB3263-EF63-49D0-9682-97CC26AED73E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3BAE180-6937-4AF1-8E54-62553A42E897}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3BAE180-6937-4AF1-8E54-62553A42E897}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3BAE180-6937-4AF1-8E54-62553A42E897}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3BAE180-6937-4AF1-8E54-62553A42E897}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
